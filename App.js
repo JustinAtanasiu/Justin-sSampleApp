@@ -1,27 +1,20 @@
 import React from 'react';
-import {
-  StyleSheet,
-  SafeAreaView,
-  StatusBar
-} from 'react-native'
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react'
 
-import Header from './src/Components/Header/Header';
-import Routes from './src/Routes'
+import Main from './src/Main'
+import persist from './src/Config/store'
+
+const persistStore = persist();
 
 const App: () => React$Node = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="dark-content" />
-      <Routes />
-    </SafeAreaView>
+    <Provider store={persistStore.store}>
+      <PersistGate loading={null} persistor={persistStore.persistor}>
+        <Main />
+      </PersistGate>
+    </Provider>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#f0f0f0',
-    flex: 1
-  }
-});
 
 export default App;
