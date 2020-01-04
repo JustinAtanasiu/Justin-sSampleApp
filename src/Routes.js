@@ -5,6 +5,7 @@ import LogIn from './Pages/LogInPage/LogIn'
 import SignUp from './Pages/SignUpPage/SignUp'
 import Header from './Components/Header/Header'
 
+
 export default class Routes extends Component<{}> {
   render() {
     return (

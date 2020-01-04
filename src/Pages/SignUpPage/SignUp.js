@@ -8,21 +8,21 @@ import {
 import { Actions } from 'react-native-router-flux';
 
 import { messages } from '../../messages';
-import AuthenticateForm from './../../Components/AuthenticateFormCommon/AuthenticateForm'
+import AuthenticateForm from '../../Components/AuthenticateFormCommon/AuthenticateForm'
 
 
-export default class LogIn extends Component<{}> {
-  signup() {
-    Actions.signup()
+export default class SignUp extends Component<{}> {
+  login() {
+    Actions.pop()
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <AuthenticateForm type='logIn'></AuthenticateForm>
+        <AuthenticateForm type='signUp'></AuthenticateForm>
         <View style={styles.separator} />
-        <TouchableOpacity style={styles.logInNoAccount} onPress={this.signup}>
-          <Text style={styles.logInNoAccountTxt}>{messages.logInNoAccount}</Text>
+        <TouchableOpacity style={styles.signUpHaveAccountAlready} onPress={this.login}>
+          <Text style={styles.signUpHaveAccountAlreadyTxt}>{messages.signUpHaveAccountAlready}</Text>
         </TouchableOpacity>
       </View>
     )
@@ -36,10 +36,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
-  logInNoAccount: {
+  signUpHaveAccountAlready: {
     marginBottom: 15
   },
-  logInNoAccountTxt: {
+  signUpHaveAccountAlreadyTxt: {
     color: '#3d5484',
     fontSize: 14,
     textDecorationLine: 'underline',

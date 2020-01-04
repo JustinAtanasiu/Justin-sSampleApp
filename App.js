@@ -5,8 +5,8 @@ import {
   StatusBar
 } from 'react-native'
 
-import Header from './Components/Header/Header';
-import Routes from './Routes'
+import Header from './src/Components/Header/Header';
+import Routes from './src/Routes'
 
 const App: () => React$Node = () => {
   return (

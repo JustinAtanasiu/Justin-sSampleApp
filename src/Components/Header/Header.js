@@ -4,7 +4,7 @@ import {
     StyleSheet
 } from 'react-native';
 
-import Logo from './../Logo/Logo';
+import Logo from '../Logo/Logo';
 
 export default class Header extends Component<{}> {
     render() {
