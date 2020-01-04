@@ -10,8 +10,11 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "install": "^0.13.0",
     "react": "16.9.0",
-    "react-native": "0.61.5"
+    "react-native": "0.61.5",
+    "react-native-router-flux": "^4.0.6",
+    "redux": "^4.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
