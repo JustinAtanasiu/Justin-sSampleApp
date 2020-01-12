@@ -9,8 +9,12 @@ export const messages = {
     logInBtnTxt: 'Log In',
     logInNoAccount: 'Sign Up to My App',
     email: 'email',
+    username: 'username',
     password: 'password',
     //Error messages
+    usernameRequired: 'Username is required',
+    emailAddressRequired: 'Email address is required',
+    passwordRequired: 'Password is required',
     emailInvalid: 'Please enter a valid email.',
     passwordTooShort: 'Password is too short.',
     invalidData: 'Invalid data',

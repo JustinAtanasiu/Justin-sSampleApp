@@ -7,7 +7,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-import { messages } from '../../messages';
+import { messages } from '../../Localization/en-gb/messages';
 
 export default class AuthenticateForm extends Component<{}> {
   constructor(props) {

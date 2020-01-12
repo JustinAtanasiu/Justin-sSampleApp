@@ -6,8 +6,7 @@ import {
   StyleSheet
 } from 'react-native';
 
-import { messages } from '../../messages';
-
+import { messages } from '../../Localization/en-gb/messages';
 
 export default class Logo extends Component<{}> {
   render() {

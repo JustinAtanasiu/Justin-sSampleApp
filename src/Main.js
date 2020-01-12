@@ -10,10 +10,11 @@ import { connect } from 'react-redux';
 
 class Main extends Component<{}> {
   render() {
+    const { createUser } = this.props;
     return (
       <SafeAreaView style={styles.container} >
         <StatusBar barStyle="dark-content" />
-        <Routes />
+        <Routes isLoggedIn={createUser.isLoggedIn} />
       </SafeAreaView>
     );
   }
@@ -26,4 +27,8 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(null, null)(Main)
+mapStateToProps = (state) => ({
+  createUser: state.authReducer.userState
+})
+
+export default connect(mapStateToProps, null)(Main)
