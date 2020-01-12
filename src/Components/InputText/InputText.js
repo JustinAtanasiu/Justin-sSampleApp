@@ -27,14 +27,26 @@ const defaultProps = {
 }
 
 class InputText extends Component<{}> {
+  componentDidMount() {
+    if (this.props.onRef != null) {
+      this.props.onRef(this)
+    }
+  }
+
+  focus() {
+    this.textInput.focus()
+  }
+
   render() {
-    const { placeholder, secureTextEntry, keyboardType, maxLength, value, onChangeText, onSubmitEditing } = this.props;
+    const { returnKeyType, placeholder, secureTextEntry, keyboardType, maxLength, value, onChangeText, onSubmitEditing } = this.props;
 
     return (
       <View>
-        <TextInput style={styles.inputBox} underlineColorAndroid='rgba(0, 0, 0, 0)' placeholder={placeholder} placeholderTextColor='#ccc' selectionColor="#009aff"
+        <TextInput
+          ref={input => this.textInput = input}
+          style={styles.inputBox} underlineColorAndroid='rgba(0, 0, 0, 0)' placeholder={placeholder} placeholderTextColor='#ccc' selectionColor="#009aff"
           color="#000" secureTextEntry={secureTextEntry} keyboardType={keyboardType} maxLength={maxLength} returnKeyType="next" value={value}
-          onSubmitEditing={onSubmitEditing} onChangeText={onChangeText} />
+          returnKeyType={returnKeyType || 'go'} onSubmitEditing={onSubmitEditing} onChangeText={onChangeText} />
       </View>
     )
   }
