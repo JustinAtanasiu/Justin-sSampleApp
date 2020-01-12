@@ -13,8 +13,11 @@ export const messages = {
     password: 'password',
     //Error messages
     usernameRequired: 'Username is required',
+    usernameInvalidLength: 'Username has to be between 6 and 20 characters long',
     emailAddressRequired: 'Email address is required',
+    emailAddressInvalid: 'Email address is invalid',
     passwordRequired: 'Password is required',
+    passwordInvalid: 'Password has to be at least 6 characters long with at least a letter and a number',
     emailInvalid: 'Please enter a valid email.',
     passwordTooShort: 'Password is too short.',
     invalidData: 'Invalid data',

@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import {
   View,
-  StyleSheet,
-  TextInput,
   Text,
   TouchableOpacity
 } from 'react-native';
+import { Field } from 'redux-form';
 
 import { messages } from '../../Localization/en-gb/messages';
+import InputText from '../../Components/InputText/InputText';
+import { authenticationFormStyle as styles } from '../../Styles/authenticationStyles';
 
 export default class AuthenticateForm extends Component<{}> {
   constructor(props) {
@@ -17,63 +18,33 @@ export default class AuthenticateForm extends Component<{}> {
     }
   }
 
-  render() {
+  renderInputText = (field) => {
+    const { meta: { touched, error }, label, secureTextEntry, maxLength, keyboardType, placeholder, input: { onChange, ...restInput } } = field;
+
     return (
-      <View style={styles.container}>
+      <View style={styles.field} >
+        <InputText onChangeText={onChange} maxLength={maxLength} placeholder={placeholder} keyboardType={keyboardType} secureTextEntry={secureTextEntry} label={label} {...restInput} />
+        {(touched && error) && <Text style={styles.errorTxt}>{error}</Text>}
+      </View >
+    )
+  }
+
+  render() {
+    const { handleSubmit, onSubmit } = this.props;
+
+    return (
+      <View style={styles.container} >
         <Text style={styles.formTitle}>{messages[this.props.type + 'Title']}</Text>
         <Text style={styles.formMessage}>{messages[this.props.type + 'Message']}</Text>
 
-        <TextInput style={styles.inputBox} placeholder={messages.email} placeholderTextColor='#ccc' selectionColor="#009aff" color="#000" keyboardType="email-address" onSubmitEditing={() => this.password.focus()}></TextInput>
-        <TextInput style={styles.inputBox} placeholder={messages.password} placeholderTextColor='#ccc' selectionColor="#009aff" color="#000" secureTextEntry={true} ref={(input) => this.password = input}></TextInput>
+        <Field name="email" placeholder={messages.email} component={this.renderInputText} keyboardType='email-address' />
+        {this.props.type === 'signUp' && <Field name="username" placeholder={messages.username} component={this.renderInputText} />}
+        <Field name="password" placeholder={messages.password} component={this.renderInputText} secureTextEntry={true} />
 
-        <TouchableOpacity style={styles.formBtn}>
+        <TouchableOpacity style={styles.formBtn} onPress={handleSubmit(onSubmit)}>
           <Text style={styles.formBtnTxt}>{messages[this.props.type + 'BtnTxt']}</Text>
         </TouchableOpacity>
-      </View>
+      </View >
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column'
-  },
-  formTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#009aff',
-    marginBottom: 30,
-    marginTop: -50
-  },
-  formMessage: {
-    color: '#777',
-    fontSize: 16,
-    marginBottom: 20,
-    textAlign: 'center',
-    paddingHorizontal: 40
-  },
-  inputBox: {
-    width: 300,
-    height: 40,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    backgroundColor: '#eee',
-    paddingHorizontal: 10,
-    marginVertical: 15
-  },
-  formBtn: {
-    backgroundColor: '#009aff',
-    width: 300,
-    marginTop: 10
-  },
-  formBtnTxt: {
-    color: '#fff',
-    textAlign: 'center',
-    fontSize: 16,
-    fontWeight: '600',
-    paddingVertical: 8
-  }
-});
