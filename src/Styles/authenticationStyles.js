@@ -42,7 +42,8 @@ export const authenticationFormStyle = StyleSheet.create({
     fontWeight: 'bold',
     color: '#009aff',
     marginBottom: 30,
-    marginTop: -50
+    marginTop: -50,
+    textAlign: 'center',
   },
   formMessage: {
     color: '#777',
@@ -63,7 +64,8 @@ export const authenticationFormStyle = StyleSheet.create({
   formBtn: {
     backgroundColor: '#009aff',
     width: 300,
-    marginTop: 10
+    marginTop: 10,
+    alignSelf: 'center'
   },
   formBtnTxt: {
     color: '#fff',

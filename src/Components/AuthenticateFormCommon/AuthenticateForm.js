@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import {
   View,
   Text,
-  TouchableOpacity
+  TouchableOpacity,
+  KeyboardAvoidingView
 } from 'react-native';
 import { Field } from 'redux-form';
 
@@ -33,7 +34,7 @@ export default class AuthenticateForm extends Component<{}> {
     const { handleSubmit, onSubmit } = this.props;
 
     return (
-      <View style={styles.container} >
+      <KeyboardAvoidingView style={styles.container} behavior='position'>
         <Text style={styles.formTitle}>{messages[this.props.type + 'Title']}</Text>
         <Text style={styles.formMessage}>{messages[this.props.type + 'Message']}</Text>
 
@@ -44,7 +45,7 @@ export default class AuthenticateForm extends Component<{}> {
         <TouchableOpacity style={styles.formBtn} onPress={handleSubmit(onSubmit)}>
           <Text style={styles.formBtnTxt}>{messages[this.props.type + 'BtnTxt']}</Text>
         </TouchableOpacity>
-      </View >
+      </KeyboardAvoidingView >
     )
   }
 }
