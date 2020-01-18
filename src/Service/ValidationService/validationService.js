@@ -40,7 +40,9 @@ const validateEmail = (value) => {
 const validatePassword = (value) => {
   if (!value) return messages.passwordRequired;
 
-  if (!/^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{6,}$/.test(value)) return messages.passwordInvalid;
+  if (!/^(?=.*[a-zA-Z])(?=.*\d).{6,}$/.test(value)) return messages.passwordExplanation;
+
+  if (!/^(?=.*[a-zA-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{6,}$/.test(value)) return messages.passwordInvalidCharacters;
 
   return;
 }

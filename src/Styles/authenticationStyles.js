@@ -31,11 +31,10 @@ export const authenticationFormStyle = StyleSheet.create({
     alignItems: 'center'
   },
   errorTxt: {
-    color: '#000',
+    color: 'rgba(240, 0, 0, 0.6)',
     fontSize: 14,
     alignContent: 'center',
     width: 300,
-    marginBottom: 15
   },
   formTitle: {
     fontSize: 24,
@@ -59,12 +58,13 @@ export const authenticationFormStyle = StyleSheet.create({
     borderColor: '#ccc',
     backgroundColor: '#eee',
     paddingHorizontal: 10,
-    marginVertical: 15
+    marginTop: 15,
+    marginBottom: 5
   },
   formBtn: {
     backgroundColor: '#009aff',
     width: 300,
-    marginTop: 10,
+    marginTop: 30,
     alignSelf: 'center'
   },
   formBtnTxt: {
@@ -73,5 +73,17 @@ export const authenticationFormStyle = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     paddingVertical: 8
+  },
+  submitErrorTxt: {
+    backgroundColor: 'rgba(240, 0, 0, 0.6)',
+    width: 300,
+    fontSize: 14,
+    fontWeight: '500',
+    textAlign: 'center',
+    paddingVertical: 4,
+    textTransform: 'capitalize',
+    color: '#fff',
+    alignSelf: 'center',
+    marginTop: 15
   }
 });

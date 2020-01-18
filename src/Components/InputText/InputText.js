@@ -38,13 +38,13 @@ class InputText extends Component<{}> {
   }
 
   render() {
-    const { returnKeyType, placeholder, secureTextEntry, keyboardType, maxLength, value, onChangeText, onSubmitEditing } = this.props;
+    const { returnKeyType, placeholder, secureTextEntry, keyboardType, maxLength, value, style, onChangeText, onSubmitEditing } = this.props;
 
     return (
       <View>
         <TextInput
           ref={input => this.textInput = input}
-          style={styles.inputBox} underlineColorAndroid='rgba(0, 0, 0, 0)' placeholder={placeholder} placeholderTextColor='#ccc' selectionColor="#009aff"
+          style={style} underlineColorAndroid='rgba(0, 0, 0, 0)' placeholder={placeholder} placeholderTextColor='#ccc' selectionColor="#009aff"
           color="#000" secureTextEntry={secureTextEntry} keyboardType={keyboardType} maxLength={maxLength} returnKeyType="next" value={value}
           returnKeyType={returnKeyType || 'go'} onSubmitEditing={onSubmitEditing} onChangeText={onChangeText} />
       </View>

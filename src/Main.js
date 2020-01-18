@@ -9,12 +9,18 @@ import Routes from './Routes'
 import { connect } from 'react-redux';
 
 class Main extends Component<{}> {
+
+  shouldComponentUpdate(nextProps, nextState) {
+    const { authData: { isLoggedIn } } = nextProps;
+    return (isLoggedIn !== nextState.isLoggedIn);
+  }
+
   render() {
-    const { createUser } = this.props;
+    const { authData: { isLoggedIn } } = this.props;
     return (
       <SafeAreaView style={styles.container} >
         <StatusBar barStyle="dark-content" />
-        <Routes isLoggedIn={createUser.isLoggedIn} />
+        <Routes isLoggedIn={isLoggedIn} />
       </SafeAreaView>
     );
   }
@@ -27,8 +33,8 @@ const styles = StyleSheet.create({
   }
 });
 
-mapStateToProps = (state) => ({
-  createUser: state.authReducer.userState
+mapStateToProps = state => ({
+  authData: state.authReducer.authData
 })
 
 export default connect(mapStateToProps, null)(Main)

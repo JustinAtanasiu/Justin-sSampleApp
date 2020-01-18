@@ -27,7 +27,7 @@ export default class AuthenticateForm extends Component<{}> {
   }
 
   render() {
-    const { type, handleSubmit, onSubmit } = this.props;
+    const { type, handleSubmit, onSubmit, getError, onChange } = this.props;
 
     return (
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -42,6 +42,7 @@ export default class AuthenticateForm extends Component<{}> {
             onEnter={() => {
               this.focusNextField(type === 'signUp' ? 'username' : 'password');
             }}
+            onChange={onChange}
             name={'email'} placeholder={messages.email} component={renderInputRef} keyboardType='email-address' returnKeyType='next' />
           {type === 'signUp' &&
             <Field
@@ -51,6 +52,7 @@ export default class AuthenticateForm extends Component<{}> {
               onEnter={() => {
                 this.focusNextField('password');
               }}
+              onChange={onChange}
               name="username" placeholder={messages.username} component={renderInputRef} returnKeyType='next' />
           }
           <Field
@@ -58,7 +60,10 @@ export default class AuthenticateForm extends Component<{}> {
               this.inputs['password'] = ref;
             }}
             onEnter={handleSubmit(onSubmit)}
+            onChange={type != 'signUp' ? onChange : () => { }}
             name={'password'} placeholder={messages.password} component={renderInputRef} secureTextEntry={true} />
+
+          {getError() && <Text style={styles.submitErrorTxt}>{messages[getError()]}</Text>}
 
           <TouchableOpacity style={styles.formBtn} onPress={handleSubmit(onSubmit)}>
             <Text style={styles.formBtnTxt}>{messages[type + 'BtnTxt']}</Text>

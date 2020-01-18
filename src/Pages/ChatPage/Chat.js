@@ -5,6 +5,8 @@ import {
   Text
 } from 'react-native';
 
+import { connect } from "react-redux";
+
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#f0f0f0',
@@ -14,7 +16,7 @@ const styles = StyleSheet.create({
   }
 });
 
-export default class Chat extends Component<{}> {
+class Chat extends Component<{}> {
   render() {
     return (
       <View style={styles.container}>
@@ -23,3 +25,13 @@ export default class Chat extends Component<{}> {
     )
   }
 }
+
+mapStateToProps = (state) => ({
+  getUser: state.userReducer.getUser
+});
+
+mapDispatchToProps = (dispatch) => ({
+  dispatch
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Chat);

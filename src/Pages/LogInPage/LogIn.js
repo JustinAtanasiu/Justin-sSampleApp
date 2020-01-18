@@ -30,12 +30,22 @@ class LogIn extends Component<{}> {
     this.loginUser(values);
   }
 
+  getError = () => {
+    return this.props.loginUser.isError && this.props.loginUser.error
+  }
+
+  onChange = () => {
+    if (this.getError()) {
+      this.props.dispatch(resetCreateUserError());
+    }
+  }
+
   render() {
-    const { handleSubmit, userState } = this.props
+    const { handleSubmit, loginUser } = this.props
     return (
       <View style={styles.container}>
-        {userState.isLoading && <Loader />}
-        <AuthenticateForm type='logIn' onSubmit={this.onSubmit} handleSubmit={handleSubmit} />
+        {loginUser.isLoading && <Loader />}
+        <AuthenticateForm type='logIn' onChange={this.onChange} onSubmit={this.onSubmit} handleSubmit={handleSubmit} getError={this.getError} />
 
         <View style={styles.authenticateSeparator} />
         <TouchableOpacity onPress={this.goToSignUp}>
@@ -48,7 +58,7 @@ class LogIn extends Component<{}> {
 
 mapStateToProps = (state) => {
   return {
-    userState: state.authReducer.userState
+    loginUser: state.authReducer.loginUser
   }
 };
 

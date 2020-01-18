@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 import { messages } from '../../Localization/en-gb/messages';
-import { createNewUser } from '../../Actions/auth.actions';
+import { createNewUser, resetCreateUserError } from '../../Actions/auth.actions';
 import Loader from '../../Components/Loader/Loader';
 import AuthenticateForm from '../../Components/AuthenticateFormCommon/AuthenticateForm';
 import { authenticationPageStyle as styles } from '../../Styles/authenticationStyles';
@@ -21,20 +21,38 @@ class SignUp extends Component<{}> {
     Actions.pop();
   }
 
-  createNewUser = (values) => {
-    this.props.dispatch(createNewUser(values, this.props.reset));
+  createNewUser = async (values) => {
+    try {
+      const response = await this.props.dispatch(createNewUser(values, this.props.reset));
+
+      if (!response.success) {
+        throw response;
+      }
+    } catch (error) {
+
+    }
+  }
+
+  getError = () => {
+    return this.props.createUser.isError && this.props.createUser.error;
   }
 
   onSubmit = (values) => {
     this.createNewUser(values);
   }
 
+  onChange = () => {
+    if (this.getError()) {
+      this.props.dispatch(resetCreateUserError());
+    }
+  }
+
   render() {
-    const { handleSubmit, userState } = this.props;
+    const { handleSubmit, createUser } = this.props;
     return (
       <View style={styles.container}>
-        {userState.isLoading && <Loader />}
-        <AuthenticateForm type='signUp' onSubmit={this.onSubmit} handleSubmit={handleSubmit} />
+        {createUser.isLoading && <Loader />}
+        <AuthenticateForm type='signUp' onChange={this.onChange} onSubmit={this.onSubmit} handleSubmit={handleSubmit} getError={this.getError} />
 
         <View style={styles.authenticateSeparator} />
         <TouchableOpacity onPress={this.goToLogin}>
@@ -47,7 +65,7 @@ class SignUp extends Component<{}> {
 
 mapStateToProps = (state) => {
   return {
-    userState: state.authReducer.userState,
+    createUser: state.authReducer.createUser,
   }
 };
 

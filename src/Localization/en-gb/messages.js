@@ -13,13 +13,12 @@ export const messages = {
     password: 'password',
     //UI Error messages
     usernameRequired: 'Username is required',
-    usernameInvalidLength: 'Username has to be between 6 and 20 characters long',
+    usernameInvalidLength: 'Enter a combination between six and twenty characters long',
     emailAddressRequired: 'Email address is required',
-    emailAddressInvalid: 'Email address is invalid',
+    emailAddressInvalid: 'Please enter a valid email',
     passwordRequired: 'Password is required',
-    passwordInvalid: 'Password has to be at least 6 characters long with at least a letter and a number',
-    emailInvalid: 'Please enter a valid email.',
-    passwordTooShort: 'Password is too short.',
+    passwordExplanation: 'Enter a combination of at least six numbers and letters',
+    passwordInvalidCharacters: 'Password contains invalid characters',
     invalidData: 'Invalid data',
     //Server Error Messages
     REGISTER_1: 'Account with that email or username already exists',
