@@ -31,7 +31,7 @@ const validateUsername = (value) => {
 const validateEmail = (value) => {
   if (!value) return messages.emailAddressRequired;
 
-  if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) return messages.emailAddressInvalid;
+  if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/i.test(value)) return messages.emailAddressInvalid;
 
   return;
 }

@@ -8,7 +8,7 @@ const userState = (state = {}, action) => {
         isLoading: true,
         token: null,
         isError: false,
-        errors: null,
+        error: null,
         isLoggedIn: false
       }
     case "CREATE_USER_SUCCESS":
@@ -17,7 +17,7 @@ const userState = (state = {}, action) => {
         isLoading: false,
         token: action.token,
         isError: false,
-        errors: null,
+        error: null,
         isLoggedIn: true
       }
     case "CREATE_USER_FAIL":
@@ -26,7 +26,7 @@ const userState = (state = {}, action) => {
         isLoading: false,
         token: null,
         isError: true,
-        errors: action.payload,
+        error: action.payload.errorCode,
         isLoggedIn: false
       }
     default:

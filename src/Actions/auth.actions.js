@@ -1,18 +1,19 @@
 import { fetchAPI } from '../Service/api/api';
 
-export const createNewUser = (payload) => {
+export const createNewUser = (payload, resetFormCb) => {
   return async (dispatch) => {
     try {
       dispatch({ type: 'CREATE_USER_LOADING' });
-      const response = await fetchAPI("/user/create", 'POST', payload, 200);
+      const response = await fetchAPI("/user/register", 'POST', payload, 200);
       if (response.success) {
         dispatch({ type: 'CREATE_USER_SUCCESS', token: response.token });
         dispatch({ type: 'GET_USER_SUCCESS', payload: response.responseBody });
+        resetFormCb();
       } else {
         throw response;
       }
-    } catch (e) {
-      dispatch({ type: 'CREATE_USER_FAIL', payload: response.responseBody });
+    } catch (error) {
+      dispatch({ type: 'CREATE_USER_FAIL', payload: error.responseBody });
     }
   }
 }
@@ -28,8 +29,8 @@ export const loginUser = (payload) => {
       } else {
         throw response;
       }
-    } catch (e) {
-      dispatch({ type: 'LOGIN_USER_FAIL', payload: response.responseBody });
+    } catch (error) {
+      dispatch({ type: 'LOGIN_USER_FAIL', payload: error.responseBody });
     }
   }
 }

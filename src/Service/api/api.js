@@ -23,15 +23,13 @@ export const api = async (url, method, body = null, headers = {}) => {
       }, config.api.requestTimeout)
     });
 
-    const response = await Promise.race(fetchPromise, timeOutPromise);
-
-    return response;
+    return await Promise.race([fetchPromise, timeOutPromise]);
   } catch (e) {
     throw new Error(e);
   }
 }
 
-export const fetchApi = async (url, method, body, statusCode, token = null, loader = false, promiseReturnType = 'json') => {
+export const fetchAPI = async (url, method, body, statusCode, token = null, loader = false, promiseReturnType = 'json') => {
   try {
     const headers = {};
     const result = {

@@ -11,7 +11,7 @@ export const messages = {
     email: 'email',
     username: 'username',
     password: 'password',
-    //Error messages
+    //UI Error messages
     usernameRequired: 'Username is required',
     usernameInvalidLength: 'Username has to be between 6 and 20 characters long',
     emailAddressRequired: 'Email address is required',
@@ -21,7 +21,9 @@ export const messages = {
     emailInvalid: 'Please enter a valid email.',
     passwordTooShort: 'Password is too short.',
     invalidData: 'Invalid data',
-    emailUsed: 'An account with this email already exists',
+    //Server Error Messages
+    REGISTER_1: 'Account with that email or username already exists',
+    LOGIN_1: 'Invalid credentials',
     //Common
-    appHeader: 'My Sample App'
+    appHeader: 'Justin\'s App'
 };

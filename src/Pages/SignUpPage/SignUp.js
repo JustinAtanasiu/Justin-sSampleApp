@@ -22,7 +22,7 @@ class SignUp extends Component<{}> {
   }
 
   createNewUser = (values) => {
-    this.props.dispatch(createNewUser(values));
+    this.props.dispatch(createNewUser(values, this.props.reset));
   }
 
   onSubmit = (values) => {
