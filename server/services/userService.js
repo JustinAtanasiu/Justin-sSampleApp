@@ -12,11 +12,11 @@ userService.login = function (body, cb) {
     const password = body.password
 
     if (email && isValidEmail(email) && password && isValidPassword(password)) {
-        findUser(email, password, function (statusCode, token) {
-            cb(statusCode, token);
+        findUser(email, password, function (statusCode, user, token) {
+            cb(statusCode, user, token);
         });
     } else {
-        cb(StatusCode.BAD_REQUEST)
+        cb(StatusCode.BAD_REQUEST, { errorCode: 'LOGIN_2' })
     }
 }
 
@@ -59,7 +59,7 @@ userService.register = function (body, cb) {
             }
         });
     } else {
-        cb(StatusCode.BAD_REQUEST);
+        cb(StatusCode.BAD_REQUEST, 'REGISTER_2');
     }
 }
 
