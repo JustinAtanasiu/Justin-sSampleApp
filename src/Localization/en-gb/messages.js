@@ -22,7 +22,9 @@ export const messages = {
     invalidData: 'Invalid data',
     //Server Error Messages
     REGISTER_1: 'Account with that email or username already exists',
+    REGISTER_2: 'Invalid Register Request',
     LOGIN_1: 'Invalid credentials',
+    LOGIN_2: 'Invalid Log In Request',
     //Common
     appHeader: 'Justin\'s App'
 };

@@ -10,6 +10,10 @@ import { connect } from 'react-redux';
 
 class Main extends Component<{}> {
 
+  state = {
+    isLoggedIn: this.props.authData ? this.props.authData.isLoggedIn : false
+  }
+
   shouldComponentUpdate(nextProps, nextState) {
     const { authData: { isLoggedIn } } = nextProps;
     return (isLoggedIn !== nextState.isLoggedIn);

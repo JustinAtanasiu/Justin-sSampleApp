@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 import { messages } from '../../Localization/en-gb/messages';
-import { loginUser } from '../../Actions/auth.actions';
+import { loginUser, resetLoginUserError } from '../../Actions/auth.actions';
 import Loader from '../../Components/Loader/Loader';
 import AuthenticateForm from '../../Components/AuthenticateFormCommon/AuthenticateForm'
 import { authenticationPageStyle as styles } from '../../Styles/authenticationStyles';
@@ -36,7 +36,7 @@ class LogIn extends Component<{}> {
 
   onChange = () => {
     if (this.getError()) {
-      this.props.dispatch(resetCreateUserError());
+      this.props.dispatch(resetLoginUserError());
     }
   }
 
