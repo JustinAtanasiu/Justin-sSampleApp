@@ -54,3 +54,16 @@ export const resetLoginUserError = () => {
     dispatch({ type: 'LOGIN_USER_INITIAL' });
   }
 }
+
+export const logoutUser = () => {
+  return async (dispatch, getState) => {
+    try {
+      await fetchAPI("/user/logout", "GET", null, 401);
+      dispatch({
+        type: "USER_LOGGED_OUT_SUCCESS"
+      });
+    } catch (e) {
+      //Do Nothing
+    }
+  }
+}

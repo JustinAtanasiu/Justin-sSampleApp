@@ -5,7 +5,8 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var mongoSanitize = require('express-mongo-sanitize');
 var xss = require('xss-clean');
-var app = express()
+var app = express();
+var StatusCodes = require('./common/StatusCode');
 
 var port = config.port;
 
@@ -54,6 +55,10 @@ app.post('/user/register', function (req, res) {
         }
         res.status(statusCode).send(response);
     })
+});
+
+app.get('/user/logout', function (req, res) {
+    res.status(StatusCodes.UNAUTHORIZED).send({});
 });
 
 app.listen(port, () => console.log(`Connected on ${port}!`));
