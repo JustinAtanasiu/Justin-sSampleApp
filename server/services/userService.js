@@ -8,7 +8,7 @@ const StatusCode = require('../common/StatusCode');
 var userService = {};
 
 userService.login = function (body, cb) {
-    const email = body.email
+    const email = body.email && body.email.toLowerCase();
     const password = body.password
 
     if (email && isValidEmail(email) && password && isValidPassword(password)) {
@@ -39,7 +39,7 @@ var findUser = function (email, password, cb) {
 }
 
 userService.register = function (body, cb) {
-    const email = body.email;
+    const email = body.email && body.email.toLowerCase();
     const password = body.password;
     const username = body.username;
 
