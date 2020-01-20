@@ -55,6 +55,30 @@ export const resetLoginUserError = () => {
   }
 }
 
+export const resetUserPassword = (payload) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: 'RESET_USER_PASSWORD_LOADING' });
+      const response = await fetchAPI("/user/resetPassword", 'POST', payload, 200);
+
+      if (response.success) {
+        dispatch({ type: 'RESET_USER_PASSWORD_SUCCESS', payload: response.responseBody });
+        return response;
+      } else {
+        throw response;
+      }
+    } catch (error) {
+      //Do Nothing
+    }
+  }
+}
+
+export const changeResetUserPasswordMessage = () => {
+  return (dispatch) => {
+    dispatch({ type: 'RESET_USER_PASSWORD_INITIAL' });
+  }
+}
+
 export const logoutUser = () => {
   return async (dispatch, getState) => {
     try {

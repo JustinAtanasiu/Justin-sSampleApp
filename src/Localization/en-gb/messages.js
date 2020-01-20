@@ -11,6 +11,11 @@ export const messages = {
     email: 'email',
     username: 'username',
     password: 'password',
+    forgotPassword: 'Forgotten Password?',
+    //Reset Password messages
+    resetPasswordTitle: 'Reset Password',
+    resetPasswordMessage: 'Enter your email and we will make sure you get a brand new password in your inbox',
+    resetPasswordBtnTxt: 'Reset Password',
     //UI Error messages
     usernameRequired: 'Username is required',
     usernameInvalidLength: 'Enter a combination between six and twenty characters long',
@@ -25,6 +30,9 @@ export const messages = {
     REGISTER_2: 'Invalid Register Request',
     LOGIN_1: 'Invalid credentials',
     LOGIN_2: 'Invalid Log In Request',
+    RESET_PASSWORD_1: 'Email with further instructions was sent',
+    RESET_PASSWORD_2: 'Invalid email provided',
     //Common
-    appHeader: 'Justin\'s App'
+    appHeader: 'Justin\'s App',
+    goBack: 'Go Back'
 };

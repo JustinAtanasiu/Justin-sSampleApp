@@ -59,7 +59,23 @@ userService.register = function (body, cb) {
             }
         });
     } else {
-        cb(StatusCode.BAD_REQUEST, 'REGISTER_2');
+        cb(StatusCode.BAD_REQUEST, { errorCode: 'REGISTER_2' });
+    }
+}
+
+userService.resetPassword = function (body, cb) {
+    const email = body.email && body.email.toLowerCase();
+    if (email && isValidEmail(email)) {
+        User.findOne({ email: email }).exec(function (err, user) {
+            if (err || !user) {
+                cb(200, { messageCode: 'RESET_PASSWORD_1' });
+            } else {
+                //send email are you sure, make new db confirm reset, send 200
+                cb(200, { messageCode: 'RESET_PASSWORD_1' });
+            }
+        });
+    } else {
+        cb(200, { messageCode: 'RESET_PASSWORD_2' });
     }
 }
 

@@ -57,6 +57,12 @@ app.post('/user/register', function (req, res) {
     })
 });
 
+app.post('/user/resetPassword', function (req, res) {
+    userService.resetPassword(req.body, function (statusCode, response) {
+        res.status(statusCode).send(response);
+    })
+});
+
 app.get('/user/logout', function (req, res) {
     res.status(StatusCodes.UNAUTHORIZED).send({});
 });

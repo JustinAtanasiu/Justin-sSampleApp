@@ -19,6 +19,14 @@ export const validateSignUp = (values) => {
   return errors;
 }
 
+export const validateResetPassword = (values) => {
+  const errors = {};
+
+  errors.email = validateEmail(values.email);
+
+  return errors;
+}
+
 const validateUsername = (value) => {
   if (!value) return messages.usernameRequired;
 

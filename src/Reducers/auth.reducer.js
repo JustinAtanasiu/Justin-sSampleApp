@@ -82,8 +82,32 @@ const loginUser = (state = {}, action) => {
   }
 }
 
+const resetUserPassword = (state = {}, action) => {
+  switch (action.type) {
+    case "RESET_USER_PASSWORD_INITIAL": {
+      return {
+        isLoading: false,
+        resetMessageCode: null
+      }
+    }
+    case "RESET_USER_PASSWORD_LOADING":
+      return {
+        isLoading: true,
+        resetMessageCode: null
+      }
+    case "RESET_USER_PASSWORD_SUCCESS":
+      return {
+        isLoading: false,
+        resetMessageCode: action.payload.messageCode
+      }
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   createUser,
   loginUser,
+  resetUserPassword,
   authData
 });

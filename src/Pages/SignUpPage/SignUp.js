@@ -17,7 +17,7 @@ import { authenticationPageStyle as styles } from '../../Styles/authenticationSt
 import { validateSignUp as validate } from '../../Service/ValidationService/validationService';
 
 class SignUp extends Component<{}> {
-  goToLogin() {
+  goBack() {
     Actions.pop();
   }
 
@@ -49,13 +49,14 @@ class SignUp extends Component<{}> {
 
   render() {
     const { handleSubmit, createUser } = this.props;
+
     return (
       <View style={styles.container}>
         {createUser.isLoading && <Loader />}
         <AuthenticateForm type='signUp' onChange={this.onChange} onSubmit={this.onSubmit} handleSubmit={handleSubmit} getError={this.getError} />
 
         <View style={styles.authenticateSeparator} />
-        <TouchableOpacity onPress={this.goToLogin}>
+        <TouchableOpacity onPress={this.goBack}>
           <Text style={styles.changeAuthenticateView}>{messages.signUpHaveAccountAlready}</Text>
         </TouchableOpacity>
       </View >

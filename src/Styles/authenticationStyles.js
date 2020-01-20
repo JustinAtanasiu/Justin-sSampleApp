@@ -64,7 +64,7 @@ export const authenticationFormStyle = StyleSheet.create({
   formBtn: {
     backgroundColor: '#009aff',
     width: 300,
-    marginTop: 30,
+    marginTop: 20,
     alignSelf: 'center'
   },
   formBtnTxt: {
@@ -74,8 +74,7 @@ export const authenticationFormStyle = StyleSheet.create({
     fontWeight: '600',
     paddingVertical: 8
   },
-  submitErrorTxt: {
-    backgroundColor: 'rgba(240, 0, 0, 0.6)',
+  submitResponseTxt: {
     width: 300,
     fontSize: 14,
     fontWeight: '500',
@@ -85,5 +84,21 @@ export const authenticationFormStyle = StyleSheet.create({
     color: '#fff',
     alignSelf: 'center',
     marginTop: 15
+  },
+  submitErrorTxt: {
+    backgroundColor: 'rgba(240, 0, 0, 0.6)',
+  },
+  submitWarningTxt: {
+    backgroundColor: 'rgba(235, 161, 0, 0.6)',
+    paddingVertical: 10
+  },
+  authenticateFormExtraView: {
+    marginTop: 40,
+    alignItems: 'center'
+  },
+  extraViewBtnTxt: {
+    color: '#0066ff',
+    fontSize: 16,
+    fontWeight: '700'
   }
 });

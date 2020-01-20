@@ -7,6 +7,7 @@ import {
   KeyboardAvoidingView
 } from 'react-native';
 import { Field } from 'redux-form';
+import { Actions } from 'react-native-router-flux';
 
 import { messages } from '../../Localization/en-gb/messages';
 import InputText from '../../Components/InputText/InputText';
@@ -20,6 +21,10 @@ export default class AuthenticateForm extends Component<{}> {
     }
     this.focusNextField = this.focusNextField.bind(this);
     this.inputs = {};
+  }
+
+  goToResetPassword() {
+    Actions.resetpassword();
   }
 
   focusNextField(id) {
@@ -63,16 +68,21 @@ export default class AuthenticateForm extends Component<{}> {
             onChange={type != 'signUp' ? onChange : () => { }}
             name={'password'} placeholder={messages.password} component={renderInputRef} secureTextEntry={true} />
 
-          {getError() && <Text style={styles.submitErrorTxt}>{messages[getError()]}</Text>}
+          {getError() && <Text style={[styles.submitResponseTxt, styles.submitErrorTxt]}>{messages[getError()]}</Text>}
 
           <TouchableOpacity style={styles.formBtn} onPress={handleSubmit(onSubmit)}>
             <Text style={styles.formBtnTxt}>{messages[type + 'BtnTxt']}</Text>
           </TouchableOpacity>
+
+          <View style={styles.authenticateFormExtraView}>
+            {type === 'logIn' && <TouchableOpacity onPress={this.goToResetPassword}>
+              <Text style={styles.extraViewBtnTxt}>{messages.forgotPassword}</Text>
+            </TouchableOpacity>}
+          </View>
         </KeyboardAvoidingView >
       </ScrollView>
     )
   }
-
 }
 
 export class renderInputRef extends Component<> {
