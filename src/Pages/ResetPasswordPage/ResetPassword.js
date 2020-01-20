@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {
   Text,
+  ScrollView,
   View,
   TouchableOpacity,
   KeyboardAvoidingView
@@ -50,26 +51,28 @@ class ResetPassword extends Component<{}> {
 
     return (
       <View style={stylesPage.container}>
-        {resetUserPassword.isLoading && <Loader />}
-        <KeyboardAvoidingView style={styles.container} behavior='position' >
-          <Text style={styles.formTitle}>{messages.resetPasswordTitle}</Text>
-          <Text style={styles.formMessage}>{messages.resetPasswordMessage}</Text>
+        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+          {resetUserPassword.isLoading && <Loader />}
+          <KeyboardAvoidingView style={styles.container} behavior='position' >
+            <Text style={styles.formTitle}>{messages.resetPasswordTitle}</Text>
+            <Text style={styles.formMessage}>{messages.resetPasswordMessage}</Text>
 
-          <Field name={'email'} placeholder={messages.email} component={renderInputRef} keyboardType='email-address'
-            onEnter={handleSubmit(this.onSubmit)} />
+            <Field name={'email'} placeholder={messages.email} component={renderInputRef} keyboardType='email-address'
+              onEnter={handleSubmit(this.onSubmit)} />
 
-          {this.getResult() && <Text style={[styles.submitResponseTxt, styles.submitWarningTxt]}>{messages[this.getResult()]}</Text>}
+            {this.getResult() && <Text style={[styles.submitResponseTxt, styles.submitWarningTxt]}>{messages[this.getResult()]}</Text>}
 
-          {!this.getResult() && <TouchableOpacity style={styles.formBtn} onPress={handleSubmit(this.onSubmit)}>
-            <Text style={styles.formBtnTxt}>{messages.resetPasswordBtnTxt}</Text>
-          </TouchableOpacity>}
+            {!this.getResult() && <TouchableOpacity style={styles.formBtn} onPress={handleSubmit(this.onSubmit)}>
+              <Text style={styles.formBtnTxt}>{messages.resetPasswordBtnTxt}</Text>
+            </TouchableOpacity>}
 
-          <View style={styles.authenticateFormExtraView}>
-            <TouchableOpacity onPress={this.goBack}>
-              <Text style={styles.extraViewBtnTxt}>{messages.goBack}</Text>
-            </TouchableOpacity>
-          </View>
-        </KeyboardAvoidingView >
+            <View style={styles.authenticateFormExtraView}>
+              <TouchableOpacity onPress={this.goBack}>
+                <Text style={styles.extraViewBtnTxt}>{messages.goBack}</Text>
+              </TouchableOpacity>
+            </View>
+          </KeyboardAvoidingView >
+        </ScrollView>
       </View>
     )
   }
