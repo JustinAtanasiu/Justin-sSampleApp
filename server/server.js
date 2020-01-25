@@ -1,11 +1,12 @@
-var config = require('./config.js');
-var userService = require('./services/userService.js');
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var mongoSanitize = require('express-mongo-sanitize');
 var xss = require('xss-clean');
 var app = express();
+
+var config = require('./config.js');
+var userService = require('./services/userService.js');
 var StatusCodes = require('./common/StatusCode');
 
 var port = config.serverSettings.port;
