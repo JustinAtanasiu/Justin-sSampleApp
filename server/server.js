@@ -8,7 +8,7 @@ var xss = require('xss-clean');
 var app = express();
 var StatusCodes = require('./common/StatusCode');
 
-var port = config.port;
+var port = config.serverSettings.port;
 
 mongoose.connect('mongodb://' + config.mongoDbUser + ':' + config.mongoDbPassword + config.mongoDbUrl + config.mongoDbName);
 
@@ -59,6 +59,12 @@ app.post('/user/register', function (req, res) {
 
 app.post('/user/resetPassword', function (req, res) {
     userService.resetPassword(req.body, function (statusCode, response) {
+        res.status(statusCode).send(response);
+    })
+});
+
+app.get('/user/confirmResetPassword', function (req, res) {
+    userService.confirmResetPassword(req.query, function (statusCode, response) {
         res.status(statusCode).send(response);
     })
 });

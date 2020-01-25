@@ -48,7 +48,7 @@ class LogIn extends Component<{}> {
         <AuthenticateForm type='logIn' onChange={this.onChange} onSubmit={this.onSubmit} handleSubmit={handleSubmit} getError={this.getError} />
 
         <View style={styles.authenticateSeparator} />
-        <TouchableOpacity onPress={this.goToSignUp}>
+        <TouchableOpacity onPress={this.goToSignUp} hitSlop={{ top: 20, bottom: 20, left: 30, right: 30 }}>
           <Text style={styles.changeAuthenticateView}>{messages.logInNoAccount}</Text>
         </TouchableOpacity>
       </View >

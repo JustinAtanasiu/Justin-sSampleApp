@@ -67,7 +67,7 @@ class ResetPassword extends Component<{}> {
             </TouchableOpacity>}
 
             <View style={styles.authenticateFormExtraView}>
-              <TouchableOpacity onPress={this.goBack}>
+              <TouchableOpacity onPress={this.goBack} hitSlop={{ top: 20, bottom: 20, left: 30, right: 30 }}>
                 <Text style={styles.extraViewBtnTxt}>{messages.goBack}</Text>
               </TouchableOpacity>
             </View>

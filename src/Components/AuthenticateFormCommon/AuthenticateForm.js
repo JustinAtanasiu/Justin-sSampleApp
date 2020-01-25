@@ -75,7 +75,7 @@ export default class AuthenticateForm extends Component<{}> {
           </TouchableOpacity>
 
           <View style={styles.authenticateFormExtraView}>
-            {type === 'logIn' && <TouchableOpacity onPress={this.goToResetPassword}>
+            {type === 'logIn' && <TouchableOpacity onPress={this.goToResetPassword} hitSlop={{ top: 20, bottom: 20, left: 30, right: 30 }}>
               <Text style={styles.extraViewBtnTxt}>{messages.forgotPassword}</Text>
             </TouchableOpacity>}
           </View>

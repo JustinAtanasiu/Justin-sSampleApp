@@ -56,7 +56,7 @@ class SignUp extends Component<{}> {
         <AuthenticateForm type='signUp' onChange={this.onChange} onSubmit={this.onSubmit} handleSubmit={handleSubmit} getError={this.getError} />
 
         <View style={styles.authenticateSeparator} />
-        <TouchableOpacity onPress={this.goBack}>
+        <TouchableOpacity onPress={this.goBack} hitSlop={{ top: 20, bottom: 20, left: 30, right: 30 }}>
           <Text style={styles.changeAuthenticateView}>{messages.signUpHaveAccountAlready}</Text>
         </TouchableOpacity>
       </View >

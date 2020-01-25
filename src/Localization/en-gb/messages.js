@@ -32,6 +32,7 @@ export const messages = {
     LOGIN_2: 'Invalid Log In Request',
     RESET_PASSWORD_1: 'Email with further instructions was sent',
     RESET_PASSWORD_2: 'Invalid email provided',
+    RESET_PASSWORD_3: 'Oups, an unexpected error happened. Please try again.',
     //Common
     appHeader: 'Justin\'s App',
     goBack: 'Go Back'
