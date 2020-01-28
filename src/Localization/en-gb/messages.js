@@ -37,6 +37,6 @@ export const messages = {
     RESET_PASSWORD_2: 'Invalid email provided',
     RESET_PASSWORD_3: 'Oups, an unexpected error happened. Please try again.',
     //Common
-    appHeader: 'Justin\'s App',
+    appHeader: 'Justin\'s',
     goBack: 'Go Back'
 };

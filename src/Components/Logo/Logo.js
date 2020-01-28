@@ -27,13 +27,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logoImg: {
-    width: 30,
-    height: 30
+    width: 80,
+    height: 35
   },
   logoTxt: {
     paddingRight: 10,
     fontSize: 18,
     color: '#009aff',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    opacity: 0.8
   }
 });
