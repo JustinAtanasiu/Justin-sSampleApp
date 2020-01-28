@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 import { Field } from 'redux-form';
 import { Actions } from 'react-native-router-flux';
+import TouchID from 'react-native-touch-id';
+import * as Keychain from 'react-native-keychain';
 
 import { messages } from '../../Localization/en-gb/messages';
 import InputText from '../../Components/InputText/InputText';
@@ -17,10 +19,34 @@ export default class AuthenticateForm extends Component<{}> {
   constructor(props) {
     super(props);
     this.state = {
-      type: this.props.type
+      type: this.props.type,
+      isBiometrySupported: false,
+      isGenericPasswordStored: false
     }
     this.focusNextField = this.focusNextField.bind(this);
     this.inputs = {};
+  }
+
+  componentDidMount = () => {
+    if (this.state.type === 'logIn') {
+      TouchID.isSupported()
+        .then(biometryType => {
+          if (biometryType === 'TouchID' || biometryType === 'FaceID' || biometryType === true) {
+            this.setState({ isBiometrySupported: true })
+          }
+        })
+        .catch(error => {
+          this.setState({ isBiometrySupported: false })
+          // User's device does not support Touch ID (or Face ID)
+          // This case is also triggered if users have not enabled Touch ID on their device
+        });
+      Keychain.getGenericPassword()
+        .then(credentials => {
+          if (credentials) {
+            this.setState({ isGenericPasswordStored: true });
+          }
+        });
+    }
   }
 
   goToResetPassword() {
@@ -32,7 +58,8 @@ export default class AuthenticateForm extends Component<{}> {
   }
 
   render() {
-    const { type, handleSubmit, onSubmit, getError, onChange } = this.props;
+    const { type, handleSubmit, onSubmit, getError, onChange, handleLogInBiometrics } = this.props;
+    const { isBiometrySupported, isGenericPasswordStored } = this.state;
 
     return (
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -75,6 +102,9 @@ export default class AuthenticateForm extends Component<{}> {
           </TouchableOpacity>
 
           <View style={styles.authenticateFormExtraView}>
+            {isBiometrySupported === true && isGenericPasswordStored === true && <TouchableOpacity style={styles.extraViewFirstBtn} onPress={handleLogInBiometrics} hitSlop={{ top: 20, bottom: 20, left: 30, right: 30 }}>
+              <Text style={styles.extraViewBtnTxt}>{messages.logInWithBiometrics}</Text>
+            </TouchableOpacity>}
             {type === 'logIn' && <TouchableOpacity onPress={this.goToResetPassword} hitSlop={{ top: 20, bottom: 20, left: 30, right: 30 }}>
               <Text style={styles.extraViewBtnTxt}>{messages.forgotPassword}</Text>
             </TouchableOpacity>}

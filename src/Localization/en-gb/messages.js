@@ -12,6 +12,7 @@ export const messages = {
     username: 'username',
     password: 'password',
     forgotPassword: 'Forgotten Password?',
+    logInWithBiometrics: 'Log In Using Biometrics!',
     //Reset Password messages
     resetPasswordTitle: 'Reset Password',
     resetPasswordMessage: 'Enter your email and we will make sure you get a brand new password in your inbox',
@@ -25,6 +26,8 @@ export const messages = {
     passwordExplanation: 'Enter a combination of at least six numbers and letters',
     passwordInvalidCharacters: 'Password contains invalid characters',
     invalidData: 'Invalid data',
+    failedAuthentication: 'Authentication Failed',
+    invalidBiometricsCredentials: 'Invalid Credentials. Please Try to Manually Log In.',
     //Server Error Messages
     REGISTER_1: 'Account with that email or username already exists',
     REGISTER_2: 'Invalid Register Request',

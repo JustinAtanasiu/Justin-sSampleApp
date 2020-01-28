@@ -8,6 +8,7 @@ export const createNewUser = (payload, resetFormCb) => {
 
       if (response.success) {
         resetFormCb();
+
         dispatch({ type: 'CREATE_USER_SUCCESS' });
         dispatch({ type: "AUTH_USER_SUCCESS", token: response.token })
         dispatch({ type: 'GET_USER_SUCCESS', payload: response.responseBody });

@@ -8,6 +8,7 @@ import { Actions } from 'react-native-router-flux';
 import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import * as Keychain from 'react-native-keychain';
 
 import { messages } from '../../Localization/en-gb/messages';
 import { createNewUser, resetCreateUserError } from '../../Actions/auth.actions';
@@ -27,6 +28,9 @@ class SignUp extends Component<{}> {
 
       if (!response.success) {
         throw response;
+      } else {
+        const { email, password } = values;
+        Keychain.setGenericPassword(email, password); // store the credentials in the keychain
       }
     } catch (error) {
 

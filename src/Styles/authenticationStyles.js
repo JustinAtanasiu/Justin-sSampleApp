@@ -100,5 +100,8 @@ export const authenticationFormStyle = StyleSheet.create({
     color: '#0066ff',
     fontSize: 16,
     fontWeight: '700'
+  },
+  extraViewFirstBtn: {
+    marginBottom: 50
   }
 });
